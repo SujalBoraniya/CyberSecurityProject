@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield — Security Toolkit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" fill="#3b82f6" stroke="#60a5fa" stroke-width="1"/>
+      </svg>
+      <span class="logo-text">CyberShield</span>
+    </div>
+    <nav>
+      <ul class="nav-list" role="list">
+        <li>
+          <button class="nav-btn active" data-section="dashboard" aria-current="page">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" fill="currentColor"/><rect x="14" y="3" width="7" height="7" rx="1" fill="currentColor"/><rect x="3" y="14" width="7" height="7" rx="1" fill="currentColor"/><rect x="14" y="14" width="7" height="7" rx="1" fill="currentColor"/></svg>
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-section="password-checker">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/></svg>
+            Password Checker
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-section="password-generator">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Password Generator
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-section="file-integrity">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="2"/><path d="M14 2v6h6M9 15l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            File Integrity
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-section="url-checker">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="2"/></svg>
+            URL Risk Checker
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="local-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        100% Local · No Server
+      </span>
+    </div>
+  </aside>
+
+  <!-- ===== MOBILE TOPBAR ===== -->
+  <header class="mobile-topbar" role="banner">
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="mobile-logo">CyberShield</span>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ── DASHBOARD ── -->
+    <section class="section active" id="section-dashboard" aria-labelledby="dash-heading">
+      <div class="page-header">
+        <div>
+          <h1 id="dash-heading">Security Dashboard</h1>
+          <p class="page-subtitle">Your browser-based cybersecurity toolkit — all processing happens locally, nothing leaves your device.</p>
+        </div>
+      </div>
+
+      <div class="info-banner" role="note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <strong>Privacy guarantee:</strong> CyberShield runs entirely in your browser. No data is sent to any server, stored in any database, or shared with any third party.
+      </div>
+
+      <!-- Tool Cards -->
+      <h2 class="section-label">Available Tools</h2>
+      <div class="card-grid">
+        <article class="tool-card" tabindex="0" role="button" data-section="password-checker" aria-label="Open Password Strength Checker">
+          <div class="card-icon card-icon--blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Password Strength Checker</h3>
+            <p>Analyze any password for length, complexity, and common weaknesses. Get actionable improvement tips instantly.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </article>
+
+        <article class="tool-card" tabindex="0" role="button" data-section="password-generator" aria-label="Open Password Generator">
+          <div class="card-icon card-icon--purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Password Generator</h3>
+            <p>Generate cryptographically secure random passwords using the browser's built-in Web Crypto API.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </article>
+
+        <article class="tool-card" tabindex="0" role="button" data-section="file-integrity" aria-label="Open File Integrity Checker">
+          <div class="card-icon card-icon--teal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="2"/><path d="M14 2v6h6M9 15l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>File Integrity Checker</h3>
+            <p>Compute the SHA-256 hash of any local file using the Web Crypto API. Compare hashes to verify file integrity.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </article>
+
+        <article class="tool-card" tabindex="0" role="button" data-section="url-checker" aria-label="Open URL Risk Checker">
+          <div class="card-icon card-icon--orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>URL Risk Checker</h3>
+            <p>Analyse a URL for structural risk indicators: IP addresses, suspicious TLDs, excessive subdomains, misleading keywords, and more.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </article>
+      </div>
+
+      <!-- Security Tips -->
+      <h2 class="section-label">Security Tips</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h4>Use Unique Passwords</h4>
+            <p>Never reuse passwords across accounts. A breach on one site should not compromise others.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h4>Enable Two-Factor Authentication</h4>
+            <p>Add a second layer of protection to all important accounts. Even a leaked password won't be enough to log in.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M4 20L20 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Avoid Phishing Links</h4>
+            <p>Verify URLs before clicking. Attackers often mimic trusted sites with subtle typos or extra domains.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Keep Software Updated</h4>
+            <p>Security patches fix known vulnerabilities. Run updates regularly on your OS, browser, and applications.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Use a Password Manager</h4>
+            <p>A password manager helps you generate, store, and autofill strong unique passwords without memorizing them.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a5 5 0 100 10A5 5 0 0012 2zM4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Limit Personal Info Online</h4>
+            <p>Minimize what you share publicly. Attackers use social media to answer security questions and craft targeted attacks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <h2 class="section-label">Recent Activity</h2>
+      <div class="activity-panel" role="log" aria-live="polite" aria-label="Recent activity log">
+        <ul class="activity-list" id="activityList">
+          <li class="activity-item activity--info">
+            <span class="activity-dot"></span>
+            <span class="activity-msg">CyberShield loaded successfully</span>
+            <span class="activity-time" id="loadTime"></span>
+          </li>
+        </ul>
+        <p class="activity-note">Only non-sensitive events are logged here. No passwords or personal data are ever recorded.</p>
+      </div>
+    </section>
+
+    <!-- ── PASSWORD STRENGTH CHECKER ── -->
+    <section class="section" id="section-password-checker" aria-labelledby="pw-heading">
+      <div class="page-header">
+        <div>
+          <h1 id="pw-heading">Password Strength Checker</h1>
+          <p class="page-subtitle">Check how strong your password is. Analysis runs entirely in your browser — your password is never sent anywhere.</p>
+        </div>
+      </div>
+
+      <div class="tool-panel">
+        <div class="form-group">
+          <label class="form-label" for="passwordInput">Enter a password to analyze</label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="passwordInput"
+              class="form-input"
+              placeholder="Type your password here…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="pw-strength-status pw-feedback"
+            />
+            <button class="toggle-visibility" id="togglePw" aria-label="Show password" aria-pressed="false">
+              <svg class="eye-show" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <svg class="eye-hide" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" stroke="currentColor" stroke-width="2"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Strength Meter -->
+        <div class="strength-meter" aria-hidden="true">
+          <div class="strength-bar-track">
+            <div class="strength-bar-fill" id="strengthBar"></div>
+          </div>
+        </div>
+        <p class="strength-label" id="pw-strength-status" aria-live="polite" aria-atomic="true"></p>
+
+        <!-- Criteria Checklist -->
+        <ul class="criteria-list" id="criteriaList" aria-label="Password criteria" role="list">
+          <li class="criterion" id="crit-length" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>At least 12 characters</span>
+          </li>
+          <li class="criterion" id="crit-upper" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>Contains uppercase letter (A–Z)</span>
+          </li>
+          <li class="criterion" id="crit-lower" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>Contains lowercase letter (a–z)</span>
+          </li>
+          <li class="criterion" id="crit-digit" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>Contains a digit (0–9)</span>
+          </li>
+          <li class="criterion" id="crit-symbol" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>Contains a special character (!@#$…)</span>
+          </li>
+          <li class="criterion" id="crit-no-repeat" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>No more than 2 repeated characters in a row</span>
+          </li>
+          <li class="criterion" id="crit-no-seq" data-met="false">
+            <span class="criterion-icon" aria-hidden="true"></span>
+            <span>No common keyboard sequences (abc, 123…)</span>
+          </li>
+        </ul>
+
+        <!-- Feedback & Suggestions -->
+        <div class="feedback-box" id="pw-feedback" aria-live="polite" aria-atomic="true">
+          <p class="feedback-placeholder">Start typing to see your password analysis.</p>
+        </div>
+
+        <button class="btn btn--secondary" id="clearPwBtn" style="margin-top:1rem">
+          Clear
+        </button>
+      </div>
+    </section>
+
+    <!-- ── PASSWORD GENERATOR ── -->
+    <section class="section" id="section-password-generator" aria-labelledby="gen-heading">
+      <div class="page-header">
+        <div>
+          <h1 id="gen-heading">Password Generator</h1>
+          <p class="page-subtitle">Generate cryptographically secure passwords using the browser Web Crypto API. Nothing is transmitted or stored.</p>
+        </div>
+      </div>
+
+      <div class="tool-panel" style="max-width:580px">
+        <!-- Options -->
+        <div class="gen-options">
+          <div class="gen-option-row">
+            <label class="form-label" for="genLength">Length: <span id="genLengthDisplay">16</span> characters</label>
+            <input type="range" id="genLength" class="range-input" min="8" max="64" value="16" aria-label="Password length" />
+          </div>
+
+          <div class="gen-checkboxes">
+            <label class="checkbox-label">
+              <input type="checkbox" id="genUpper" checked /> Uppercase (A–Z)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="genLower" checked /> Lowercase (a–z)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="genDigits" checked /> Digits (0–9)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="genSymbols" checked /> Symbols (!@#$…)
+            </label>
+          </div>
+
+          <div class="gen-option-row" style="margin-top:8px">
+            <label class="checkbox-label">
+              <input type="checkbox" id="genNoAmbig" /> Exclude ambiguous characters (0, O, l, 1, I)
+            </label>
+          </div>
+        </div>
+
+        <!-- Output -->
+        <div class="gen-output-wrapper" style="margin-top:20px">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="genOutput"
+              class="form-input"
+              readonly
+              placeholder="Click Generate…"
+              aria-label="Generated password"
+              spellcheck="false"
+              autocomplete="off"
+            />
+            <button class="toggle-visibility" id="copyGenBtn" aria-label="Copy password to clipboard" title="Copy">
+              <svg id="copyIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/></svg>
+              <svg id="copiedIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none"><path d="M20 6L9 17l-5-5" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Strength display for generated password -->
+        <div class="strength-meter" style="margin-top:10px" aria-hidden="true">
+          <div class="strength-bar-track">
+            <div class="strength-bar-fill" id="genStrengthBar"></div>
+          </div>
+        </div>
+        <p class="strength-label" id="genStrengthLabel" aria-live="polite" aria-atomic="true"></p>
+
+        <div class="gen-actions">
+          <button class="btn btn--primary" id="generateBtn">Generate Password</button>
+          <button class="btn btn--secondary" id="generateAgainBtn" style="display:none">Regenerate</button>
+        </div>
+
+        <p id="genError" class="gen-error" role="alert" aria-live="assertive" style="display:none">
+          Select at least one character type.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── FILE INTEGRITY CHECKER ── -->
+    <section class="section" id="section-file-integrity" aria-labelledby="fi-heading">
+      <div class="page-header">
+        <div>
+          <h1 id="fi-heading">File Integrity Checker</h1>
+          <p class="page-subtitle">Compute the SHA-256 hash of a local file entirely in your browser. No file data leaves your device.</p>
+        </div>
+      </div>
+
+      <div class="tool-panel" style="max-width:640px">
+        <!-- Drop zone -->
+        <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Drop a file here or click to choose">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="17 8 12 3 7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <p class="drop-zone-label">Drop a file here</p>
+          <p class="drop-zone-sub">or click to browse</p>
+          <input type="file" id="fileInput" class="file-input-hidden" aria-label="Choose file" />
+        </div>
+
+        <!-- File info -->
+        <div id="fileInfo" class="file-info" style="display:none" aria-live="polite">
+          <div class="file-info-row">
+            <span class="file-info-label">File name</span>
+            <span class="file-info-value" id="fileName"></span>
+          </div>
+          <div class="file-info-row">
+            <span class="file-info-label">File size</span>
+            <span class="file-info-value" id="fileSize"></span>
+          </div>
+          <div class="file-info-row">
+            <span class="file-info-label">Last modified</span>
+            <span class="file-info-value" id="fileDate"></span>
+          </div>
+        </div>
+
+        <!-- Hash output -->
+        <div id="hashSection" style="display:none" aria-live="polite">
+          <div class="hash-label-row">
+            <span class="form-label" style="margin:0">SHA-256 Hash</span>
+            <button class="btn btn--secondary btn--sm" id="copyHashBtn" aria-label="Copy hash to clipboard">Copy</button>
+          </div>
+          <div class="hash-output-wrapper">
+            <code id="hashOutput" class="hash-output"></code>
+          </div>
+
+          <!-- Comparison -->
+          <div class="form-group" style="margin-top:20px">
+            <label class="form-label" for="hashCompareInput">Compare with a known hash (optional)</label>
+            <input
+              type="text"
+              id="hashCompareInput"
+              class="form-input"
+              placeholder="Paste expected SHA-256 hash here…"
+              spellcheck="false"
+              autocomplete="off"
+              aria-describedby="hashCompareResult"
+            />
+          </div>
+          <div id="hashCompareResult" class="hash-compare-result" aria-live="polite" aria-atomic="true" style="display:none"></div>
+        </div>
+
+        <!-- Progress -->
+        <div id="hashProgress" style="display:none" aria-live="polite">
+          <div class="strength-bar-track" style="margin-top:16px">
+            <div class="strength-bar-fill" id="hashProgressBar" style="background:var(--accent);width:0%"></div>
+          </div>
+          <p class="hash-progress-label">Computing SHA-256…</p>
+        </div>
+
+        <button class="btn btn--secondary" id="clearFileBtn" style="margin-top:1.25rem;display:none">Clear</button>
+      </div>
+    </section>
+
+    <!-- ── URL RISK CHECKER ── -->
+    <section class="section" id="section-url-checker" aria-labelledby="url-heading">
+      <div class="page-header">
+        <div>
+          <h1 id="url-heading">URL Risk Checker</h1>
+          <p class="page-subtitle">Analyse a URL for structural and pattern-based risk indicators — entirely offline. This does not contact the URL or any external service.</p>
+        </div>
+      </div>
+
+      <div class="tool-panel" style="max-width:640px">
+        <div class="form-group">
+          <label class="form-label" for="urlInput">Enter a URL to analyse</label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="urlInput"
+              class="form-input"
+              placeholder="https://example.com/page"
+              spellcheck="false"
+              autocomplete="off"
+              aria-describedby="urlResult"
+            />
+          </div>
+        </div>
+
+        <div class="url-actions">
+          <button class="btn btn--primary" id="checkUrlBtn">Analyse URL</button>
+          <button class="btn btn--secondary" id="clearUrlBtn">Clear</button>
+        </div>
+
+        <!-- Result -->
+        <div id="urlResult" class="url-result" aria-live="polite" aria-atomic="true" style="display:none">
+          <div class="url-verdict" id="urlVerdict"></div>
+          <ul class="url-findings" id="urlFindings" role="list" aria-label="Risk findings"></ul>
+          <p class="url-disclaimer">
+            <strong>Note:</strong> This analysis is based on structural patterns only. It does not contact the URL,
+            check any blocklist, or guarantee a URL is safe or malicious. Always exercise caution with unfamiliar links.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
